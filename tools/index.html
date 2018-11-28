@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Tools</title>
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="stylesheet" href="./layui/css/layui.css">
+</head>
+<body>
+
+<div class="layui-container">
+  <div class="layui-tab">
+    <ul class="layui-tab-title">
+      <li class="layui-this">Hash计算</li>
+      <li>Base 编解码</li>
+      <li>Tab3</li>
+      <li>Tab4</li>
+      <li>Tab5</li>
+    </ul>
+    <div class="layui-tab-content">
+      <div class="layui-tab-item layui-show">
+        <!-- hash -->
+        
+        <form class="layui-form" action="">
+          <fieldset class="layui-elem-field" style="margin-top: 30px;padding: 30px;">
+            <legend>Hash计算</legend>
+            
+            <div class="layui-form-item">
+              <label class="layui-form-label">输入数据</label>
+              <div class="layui-input-block">
+                <textarea id="hashInputText" placeholder="请输入数据" class="layui-textarea" onkeyup="calcHash()"></textarea>
+              </div>
+            </div>
+            
+            <div class="layui-form-item">
+              <div class="layui-inline">
+                <label class="layui-form-label">输入格式</label>
+                <div class="layui-input-block">
+                  <input type="radio" name="hashInputType" value="1" title="HEX" checked="" onclick="calcHash()">
+                  <input type="radio" name="hashInputType" value="2" title="UTF-8" onclick="calcHash()">
+                </div>
+              </div>
+              <div class="layui-inline">
+                <div class="layui-input-block">
+                  <button id="hashBtn" type="button" class="layui-btn" lay-submit="">Hash计算</button>
+                  <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                </div>
+              </div>
+            </div>
+  
+            <div class="layui-form-item">
+              <label class="layui-form-label">输入的HEX</label>
+              <div class="layui-input-block">
+                <input id="hashInputHexValue" placeholder="输入的HEX" readonly="true" value="" class="layui-input"></input>
+              </div>
+            </div>
+            
+            <div class="layui-form-item">
+              <label class="layui-form-label">MD5</label>
+              <div class="layui-input-block">
+                <input id="hashOutputMd5" placeholder="MD5结果" readonly="true" value="" class="layui-input"></input>
+              </div>
+            </div>
+            
+            <div class="layui-form-item">
+              <label class="layui-form-label">SHA1</label>
+              <div class="layui-input-block">
+                <input id="hashOutputSha1" placeholder="SHA1结果" readonly="true" value="" class="layui-input"></input>
+              </div>
+            </div>
+            
+            <div class="layui-form-item">
+              <label class="layui-form-label">SHA224</label>
+              <div class="layui-input-block">
+                <input id="hashOutputSha224" placeholder="SHA224结果" readonly="true" value=""
+                       class="layui-input"></input>
+              </div>
+            </div>
+            
+            <div class="layui-form-item">
+              <label class="layui-form-label">SHA256</label>
+              <div class="layui-input-block">
+                <input id="hashOutputSha256" placeholder="SHA256结果" readonly="true" value=""
+                       class="layui-input"></input>
+              </div>
+            </div>
+            
+            <div class="layui-form-item">
+              <label class="layui-form-label">SHA3</label>
+              <div class="layui-input-block">
+                <input id="hashOutputSha3" placeholder="SHA3结果" readonly="true" value=""
+                       class="layui-input"></input>
+              </div>
+            </div>
+  
+            <div class="layui-form-item">
+              <label class="layui-form-label">SHA384</label>
+              <div class="layui-input-block">
+                <input id="hashOutputSha384" placeholder="SHA384结果" readonly="true" value=""
+                       class="layui-input"></input>
+              </div>
+            </div>
+  
+            <div class="layui-form-item">
+              <label class="layui-form-label">RIPEMD160</label>
+              <div class="layui-input-block">
+                <input id="hashOutputRipemd160" placeholder="RIPEMD160结果" readonly="true" value=""
+                       class="layui-input"></input>
+              </div>
+            </div>
+            
+            <div class="layui-form-item">
+              <label class="layui-form-label">SHA512</label>
+              <div class="layui-input-block">
+                <input id="hashOutputSha512" placeholder="SHA512结果" readonly="true" value=""
+                       class="layui-input"></input>
+              </div>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+      
+      <div class="layui-tab-item">
+        <!-- base 编解码 -->
+        
+        <form class="layui-form" action="">
+          <fieldset class="layui-elem-field" style="margin-top: 30px;padding: 30px;">
+            <legend>base 编解码</legend>
+            
+            <div class="layui-form-item">
+              <label class="layui-form-label">输入数据</label>
+              <div class="layui-input-block">
+                <textarea id="baseInputText" placeholder="请输入数据" class="layui-textarea" onkeyup="calcHash()"></textarea>
+              </div>
+            </div>
+            
+            <div class="layui-form-item">
+              <div class="layui-inline">
+                <label class="layui-form-label">输入格式</label>
+                <div class="layui-input-block">
+                  <input type="radio" name="hashInputType" value="HEX" title="HEX" checked="">
+                  <input type="radio" name="hashInputType" value="UTF-8" title="UTF-8">
+                </div>
+              </div>
+              <div class="layui-inline">
+                <label class="layui-form-label">输出格式</label>
+                <div class="layui-input-block">
+                  <input type="radio" name="hashOutputType" value="HEX" title="HEX" checked="">
+                  <input type="radio" name="hashOutputType" value="UTF-8" title="UTF-8">
+                </div>
+              </div>
+            </div>
+            
+            <div class="layui-form-item">
+              <label class="layui-form-label">Base64</label>
+              <div class="layui-input-block">
+                <input id="base64Output" placeholder="Base64结果" readonly="true" value="" class="layui-input"></input>
+              </div>
+            </div>
+          
+          </fieldset>
+        </form>
+      
+      </div>
+      <div class="layui-tab-item">内容3</div>
+      <div class="layui-tab-item">内容4</div>
+      <div class="layui-tab-item">内容5</div>
+    </div>
+  </div>
+
+</div>
+
+<script src="./layui/layui.all.js"></script>
+<script src="./script/jquery-3.3.1.min.js"></script>
+<!-- CryptoJs https://github.com/brix/crypto-js -->
+<script src="./script/crypto-js-3.1.9-1.js"></script>
+<script>
+//由于模块都一次性加载，因此不用执行 layui.use() 来加载对应模块，直接使用即可：
+;!function(){
+  var layer = layui.layer
+  ,form = layui.form;
+  
+  //layer.msg('Hello World');
+}();
+
+
+
+</script>
+
+<script>
+function calcHash() {
+  var hashInput = $("#hashInputText").val();
+  var inputType = $('input:radio[name="hashInputType"]:checked').val();
+  var valueHex = inputType==='1' ? CryptoJS.enc.Hex.parse(hashInput) : CryptoJS.enc.Utf8.parse(hashInput);
+  console.log("valueHex=" + valueHex.toString());
+  $("#hashInputHexValue").val(valueHex.toString());
+
+  // md5
+  try {
+    var hash = CryptoJS.MD5(valueHex).toString();
+    $("#hashOutputMd5").val(hash);
+    console.log("md5=" + hash);
+  } catch(e) {
+    $("#hashOutputMd5").value = e.message;
+    console.log("md5 e=" + e.message);
+  }
+
+  // sha1
+  try {
+    var hash = CryptoJS.SHA1(valueHex).toString();
+    $("#hashOutputSha1").val(hash);
+    console.log("SHA1=" + hash);
+  } catch(e) {
+    $("#hashOutputSha1").value = e.message;
+    console.log("SHA1 e=" + e.message);
+  }
+  
+  // sha224
+  try {
+    var hash = CryptoJS.SHA224(valueHex).toString();
+    $("#hashOutputSha224").val(hash);
+    console.log("SHA224=" + hash);
+  } catch(e) {
+    $("#hashOutputSha224").value = e.message;
+    console.log("SHA224 e=" + e.message);
+  }
+  
+  // sha256
+  try {
+    var hash = CryptoJS.SHA256(valueHex).toString();
+    $("#hashOutputSha256").val(hash);
+    console.log("SHA256=" + hash);
+  } catch(e) {
+    $("#hashOutputSha256").value = e.message;
+    console.log("SHA256 e=" + e.message);
+  }
+  
+  // sha3
+  try {
+    var hash = CryptoJS.SHA3(valueHex).toString();
+    $("#hashOutputSha3").val(hash);
+    console.log("SHA3=" + hash);
+  } catch(e) {
+    $("#hashOutputSha3").value = e.message;
+    console.log("SHA3 e=" + e.message);
+  }
+  
+  // sha384
+  try {
+    var hash = CryptoJS.SHA384(valueHex).toString();
+    $("#hashOutputSha384").val(hash);
+    console.log("SHA384=" + hash);
+  } catch(e) {
+    $("#hashOutputSha384").value = e.message;
+    console.log("SHA384 e=" + e.message);
+  }
+  
+  // Ripemd160
+  try {
+    var hash = CryptoJS.RIPEMD160(valueHex).toString();
+    $("#hashOutputRipemd160").val(hash);
+    console.log("RIPEMD160=" + hash);
+  } catch(e) {
+    $("#hashOutputRipemd160").value = e.message;
+    console.log("RIPEMD160 e=" + e.message);
+  }
+  
+  // sha512
+  try {
+    var hash = CryptoJS.SHA512(valueHex).toString();
+    $("#hashOutputSha512").val(hash);
+    console.log("SHA512=" + hash);
+  } catch(e) {
+    $("#hashOutputSha512").value = e.message;
+    console.log("SHA512 e=" + e.message);
+  }
+}
+$(document).ready(function(){
+  calcHash();
+
+  $("#hashBtn").click(function(event){
+    event.preventDefault();
+    calcHash();
+  });
+});
+
+</script>
+</body>
+</html>
